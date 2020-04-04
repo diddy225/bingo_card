@@ -1,7 +1,8 @@
-const cardAmount = $("#numberOfCards");
-const generateCards = $("#generateCards");
-const clearBoard = $("#clearBoard");
-const errorBox = $("#error-msg");
+const cardAmount = $('#numberOfCards');
+const generateCards = $('#generateCards');
+const clearBoard = $('#clearBoard');
+const errorBox = $('#error-msg');
+let markerColor = '#f00';
 
 let errorTimeout;
 
@@ -11,12 +12,12 @@ const getRandomNumbers = (min, max) => {
     let random = Math.floor(Math.random() * (max - min)) + min;
     if (array.indexOf(random) === -1) array.push(random);
   }
-  return array.map(num => `<div class="numBox">${num}</div>`).join("");
+  return array.map((num) => `<div class="numBox">${num}</div>`).join('');
 };
 
-generateCards.on("click", e => {
+generateCards.on('click', (e) => {
   e.preventDefault();
-
+  unsafed = true;
   // if timeout exist clear it out
   if (errorTimeout) {
     clearTimeout(errorTimeout);
@@ -27,9 +28,9 @@ generateCards.on("click", e => {
 
   // if the number of boards is greater than 4 return and throw an error
   if (num > 4) {
-    errorBox.text("You may not create more than 4 cards per game");
+    errorBox.text('You may not create more than 4 cards per game');
     errorTimeout = setTimeout(() => {
-      errorBox.text("");
+      errorBox.text('');
     }, 2000);
     return;
   }
@@ -47,27 +48,34 @@ generateCards.on("click", e => {
       `<div class="numRow"><div class="headerLetter">G</div>${letterG}</div>`,
       `<div class="numRow"><div class="headerLetter">O</div>${letterO}</div>`
     );
-    $("#card-container").append(numBox);
+    $('#card-container').append(numBox);
   }
-  cardAmount.val("");
-  $(".card-body div:nth-child(3) div:nth-child(4)").text("FREE");
+  cardAmount.val('');
+  $('.card-body div:nth-child(3) div:nth-child(4)').text('FREE');
 });
 
-clearBoard.on("click", e => {
+clearBoard.on('click', (e) => {
   e.preventDefault();
-  $("#card-container").empty();
+  $('#card-container').empty();
 });
 
 // highlight selected box
-$(document).on("click", ".numBox", function() {
-  let backgroundColor = $(this).css("background-color");
-  console.log(backgroundColor);
+$(document).on('click', '.numBox', function () {
+  let backgroundColor = $(this).css('background-color');
   if (
-    backgroundColor === "rgba(0, 0, 0, 0)" ||
-    backgroundColor === "rgb(255, 255, 255)"
+    backgroundColor === 'rgba(0, 0, 0, 0)' ||
+    backgroundColor === 'rgb(255, 255, 255)'
   ) {
-    $(this).css("background-color", "#f00");
+    $(this).css('background-color', markerColor);
+    $(this).css('color', '#fff');
   } else {
-    $(this).css("background-color", "#fff");
+    $(this).css('background-color', '#fff');
+    $(this).css('color', '#000');
   }
+});
+
+$('.color-box').on('click', function () {
+  $('.color-box').css('border-color', 'grey');
+  markerColor = $(this).attr('data-color');
+  $(this).css('border-color', 'yellow');
 });

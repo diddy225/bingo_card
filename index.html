@@ -4,22 +4,90 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" 
+    integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" 
+    crossorigin="anonymous">
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
       crossorigin="anonymous"
     />
-
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
-    <input id="numberOfCards" type="number" placeholder="How many cards?" />
-    <button id="generateCards" class="btn btn-primary">Generate Cards</button>
-    <button id="clearBoard" class="btn btn-danger">Clear board</button>
-    <span id="error-msg"></span>
-    <h1>Bingo Cards</h1>
-    <div id="card-container"></div>
+    <div id="page-content">
+      <div class="container-fluid">
+        <div class="bigBox">
+          <h1 class="display-4">Bingo Card Creator</h1>
+          <p class="lead">1000000000% FREEEEE!!</p>
+          <p>
+            <a target="_blank" href=https://github.com/diddy225><i class="fab fa-github-alt"></i></a>
+            <a target="_blank" href=https://twitter.com/1llmattic><i class="fab fa-twitter"></i></a>
+            <a target="_blank" href=https://www.linkedin.com/in/matthew-carpenter-23125081><i class="fab fa-linkedin-in"></i></a>
+
+          </p>
+          <hr class="my-4" />
+          <div class="row justify-content-center">
+            <div class="col-3">
+              <div class="input-group input-group-lg">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-lg"
+                    >How many cards</span
+                  >
+                </div>
+                <input class="form-control" id="numberOfCards" type="number" />
+              </div>
+            </div>
+            <button id="generateCards" class="btn btn-primary">
+              Generate Cards
+            </button>
+            <button class="btn btn-danger" data-toggle="modal" data-target="#reset-board">
+              Clear board
+            </button>
+            <span id="error-msg"></span>
+          </div>
+          <div>
+            <div id="color-picker-header">CHOOSE A MARKER COLOR:</div>
+            <div id="color-picker">
+              <div data-color="#000" class="color-box black"></div>
+              <div data-color="#f00" class="color-box red"></div>
+              <div data-color="#00f" class="color-box blue"></div>
+              <div data-color="#ffc0cb" class="color-box pink"></div>
+              <div data-color="#ffa500" class="color-box orange"></div>
+            </div>
+          </div>
+        </div>
+        <div id="card-container"></div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="reset-board" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Reset</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Are you sure you want to clear the board?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <button id="clearBoard" data-dismiss="modal" type="button" class="btn btn-danger">Reset</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer id="footer">
+      <div>
+        Made By Matthew Carpenter &copy; 2020
+      </div>
+    </footer>
     <script
       src="https://code.jquery.com/jquery-3.4.1.min.js"
       integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
