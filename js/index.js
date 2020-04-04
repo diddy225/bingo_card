@@ -9,7 +9,7 @@ let errorTimeout;
 const getRandomNumbers = (min, max) => {
   let array = [];
   for (let i = 0; array.length < 5; i++) {
-    let random = Math.floor(Math.random() * (max - min)) + min;
+    let random = Math.floor(Math.random() * (max - min)) + min + 1;
     if (array.indexOf(random) === -1) array.push(random);
   }
   return array.map((num) => `<div class="numBox">${num}</div>`).join('');
