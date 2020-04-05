@@ -79,8 +79,8 @@ body {
   font-weight: bold;
 }
 
-.alert {
-  width: 100%;
+.alert-box {
+  display: none;
 }
 
 #color-picker {
