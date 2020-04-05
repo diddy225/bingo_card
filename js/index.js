@@ -1,7 +1,6 @@
 const cardAmount = $('#numberOfCards');
 const generateCards = $('#generateCards');
 const clearBoard = $('#clearBoard');
-const errorBox = $('#error-msg');
 let markerColor = '#f00';
 
 let errorTimeout;
@@ -17,7 +16,6 @@ const getRandomNumbers = (min, max) => {
 
 generateCards.on('click', (e) => {
   e.preventDefault();
-  unsafed = true;
   // if timeout exist clear it out
   if (errorTimeout) {
     clearTimeout(errorTimeout);
@@ -28,10 +26,13 @@ generateCards.on('click', (e) => {
 
   // if the number of boards is greater than 4 return and throw an error
   if (num > 4) {
-    errorBox.text('You may not create more than 4 cards per game');
+    $('.alert').text(`YOU DONT NEED ${cardAmount.val()} CARDS, TRY 4!`);
+    $('.alert-box').css('display', 'flex');
+    $('.alert').addClass('show');
     errorTimeout = setTimeout(() => {
-      errorBox.text('');
-    }, 2000);
+      $('.alert').removeClass('show');
+      $('.alert-box').css('display', 'none');
+    }, 3000);
     return;
   }
   for (let i = 0; i < num; i++) {

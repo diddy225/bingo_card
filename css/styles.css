@@ -74,15 +74,13 @@ body {
   justify-content: center;
 }
 
-#error-msg {
-  color: red;
-  font-style: italic;
-  font-size: 16px;
-}
-
 #color-picker-header {
   margin-top: 20px;
   font-weight: bold;
+}
+
+.alert {
+  width: 100%;
 }
 
 #color-picker {
