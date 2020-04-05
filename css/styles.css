@@ -79,10 +79,6 @@ body {
   font-weight: bold;
 }
 
-.alert-box {
-  display: none;
-}
-
 #color-picker {
   display: flex;
   flex-direction: row;

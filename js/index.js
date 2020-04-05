@@ -27,11 +27,9 @@ generateCards.on('click', (e) => {
   // if the number of boards is greater than 4 return and throw an error
   if (num > 4) {
     $('.alert').text(`YOU DONT NEED ${cardAmount.val()} CARDS, TRY 4!`);
-    $('.alert-box').css('display', 'flex');
     $('.alert').addClass('show');
     errorTimeout = setTimeout(() => {
       $('.alert').removeClass('show');
-      $('.alert-box').css('display', 'none');
     }, 3000);
     return;
   }
